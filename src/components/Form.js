@@ -72,7 +72,7 @@ export default function Form(props) {
                 <b>
                   {
                     text.split(" ").filter((element) => {
-                      return element.length != 0;
+                      return element.length !== 0;
                     }).length
                   }
                 </b>
