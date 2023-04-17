@@ -15,16 +15,15 @@ export default function Form(props) {
     let newText = "";
     setText(newText);
   };
- const handleCopyclick=()=>{
-  let text =document.getElementById("mybox");
-  text.select();
-  navigator.clipboard.writeText(text.value);
-
- };
- const handleWhiteSpace = () => {
-  let newText = text.split(/[ ]+/);
-  setText(newText.join(" "));
-};
+  const handleCopyclick = () => {
+    let text = document.getElementById("mybox");
+    text.select();
+    navigator.clipboard.writeText(text.value);
+  };
+  const handleWhiteSpace = () => {
+    let newText = text.split(/[ ]+/);
+    setText(newText.join(" "));
+  };
   const handleOnChange = (event) => {
     // console.log("On Change");
     setText(event.target.value);
@@ -45,22 +44,21 @@ export default function Form(props) {
             rows="7"
           ></textarea>
         </div>
-        <button className="btn btn-dark" onClick={handleUpClick}>
+        <button className="btn btn-dark mx-1 my-1" onClick={handleUpClick}>
           Uppercase
         </button>{" "}
-        <button className="btn btn-dark" onClick={handleDownClick}>
+        <button className="btn btn-dark mx-1 my-1" onClick={handleDownClick}>
           Lowercase
         </button>
-        <button className="btn btn-dark mx-1" onClick={handleClearclick}>
-          Clear Text
-        </button>
-        <button className="btn btn-dark mx-1" onClick={handleCopyclick}>
-          Copy Text
-        </button>
-        <button className="btn btn-dark mx-1" onClick={handleWhiteSpace}>
+        <button className="btn btn-dark mx-1 my-1" onClick={handleWhiteSpace}>
           Remove Whitespace
         </button>
-        
+        <button className="btn btn-dark mx-1 my-1" onClick={handleCopyclick}>
+          Copy Text
+        </button>
+        <button className="btn btn-dark mx-1 my-1" onClick={handleClearclick}>
+          Clear Text
+        </button>
       </div>
 
       <h2 className="card-title my-3"> Stats for Nerds🤓</h2>
@@ -69,13 +67,32 @@ export default function Form(props) {
           <div className="card-text">
             {" "}
             <h4>
-              Text Summary : <u><b>{text.split(" ").filter((element)=>{return element.length!=0}).length}</b></u> words and{" "}
-              <u><b>{text.length} </b></u> characters
+              Text Summary :{" "}
+              <u>
+                <b>
+                  {
+                    text.split(" ").filter((element) => {
+                      return element.length != 0;
+                    }).length
+                  }
+                </b>
+              </u>{" "}
+              words and{" "}
+              <u>
+                <b>{text.length} </b>
+              </u>{" "}
+              characters
             </h4>
             <h4>
               Time Required to read text :{" "}
-              <u><b>{0.008 * text.split(" ").length}</b></u>
-              minutes or <u><b>{0.48 * text.split(" ").length}</b></u> seconds
+              <u>
+                <b>{0.008 * text.split(" ").length}</b>
+              </u>
+              minutes or{" "}
+              <u>
+                <b>{0.48 * text.split(" ").length}</b>
+              </u>{" "}
+              seconds
             </h4>{" "}
           </div>
         </div>
@@ -85,10 +102,14 @@ export default function Form(props) {
         <div className="card-body">
           <div className="card-text">
             {" "}
-            <h4>{text.length>0?text:"Enter text in above textbox to preview here"}</h4>
+            <h4>
+              {text.length > 0
+                ? text
+                : "Enter text in above textbox to preview here"}
+            </h4>
           </div>
         </div>
       </div>
     </>
   );
-  }
+}
