@@ -69,7 +69,7 @@ export default function Form(props) {
           <div className="card-text">
             {" "}
             <h4>
-              Text Summary : <u><b>{text.split(" ").filter((element)=>{return.element.length!=0}).length}</b></u> words and{" "}
+              Text Summary : <u><b>{text.split(" ").filter((element)=>{return element.length!=0}).length}</b></u> words and{" "}
               <u><b>{text.length} </b></u> characters
             </h4>
             <h4>
