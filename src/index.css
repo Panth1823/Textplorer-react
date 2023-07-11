@@ -1,20 +1,6 @@
-@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:wght@500&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+ 
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:wght@500&display=swap");  
 
-.mb-3 {
-  font-weight: bold;
-  font-size: 1.5em;
-  margin-top: 50px;
-}
-* {
-  font-family: "Noto Sans", sans-serif;
-}
-
-.form-control {
-  opacity: 85%;
-  font-size: 20px;
-}
-.container {
-  margin-top: 20px;
-  text-align: left;
-  font-size: 15px;
-}

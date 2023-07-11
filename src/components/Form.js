@@ -16,9 +16,8 @@ export default function Form(props) {
     setText(newText);
   };
   const handleCopyclick = () => {
-    let text = document.getElementById("mybox");
-    text.select();
-    navigator.clipboard.writeText(text.value);
+    navigator.clipboard.writeText(text); 
+    
   };
   const handleWhiteSpace = () => {
     let newText = text.split(/[ ]+/);
@@ -34,41 +33,64 @@ export default function Form(props) {
   return (
     <>
       <div>
-        <div className="mb-3">
-          <label className="mybox">{props.heading}</label>
+        <label className="mybox">{props.heading}</label>
+        <div className=" box-content  min-w-full container mx-auto">
+          <label
+            for="message"
+            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          ></label>
           <textarea
+            id="message"
             value={text}
             onChange={handleOnChange}
-            className="form-control"
-            id="mybox"
-            rows="7"
+            rows="5"
+            class="block p-2.5 text-lg text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 mt-10 w-full font-mono"
+            placeholder="Write text here to analyze..."
           ></textarea>
         </div>
-        <button className="btn btn-dark mx-1 my-1" onClick={handleUpClick}>
+
+        <button
+          className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded mt-3 ml-5"
+          onClick={handleUpClick}
+        >
           Uppercase
-        </button>{" "}
-        <button className="btn btn-dark mx-1 my-1" onClick={handleDownClick}>
+        </button>
+        <button
+          className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded mt-3 ml-5"
+          onClick={handleDownClick}
+        >
           Lowercase
         </button>
-        <button className="btn btn-dark mx-1 my-1" onClick={handleWhiteSpace}>
-          Remove Whitespace
-        </button>
-        <button className="btn btn-dark mx-1 my-1" onClick={handleCopyclick}>
+        <button
+          className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded mt-3 ml-5"
+          onClick={handleCopyclick}
+        >
           Copy Text
         </button>
-        <button className="btn btn-dark mx-1 my-1" onClick={handleClearclick}>
+
+        <button
+          className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded mt-3 ml-5"
+          onClick={handleWhiteSpace}
+        >
+          Whitespace
+        </button>
+
+        <button
+          className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded mt-5 ml-5"
+          onClick={handleClearclick}
+        >
           Clear Text
         </button>
       </div>
 
-      <h2 className="card-title my-3"> Stats for Nerds🤓</h2>
-      <div className="card">
-        <div className="card-body">
-          <div className="card-text">
+      <h2 className=" text-white font-mono text-xl mt-10"> Stats for Nerds 🤓</h2>
+      <div className=" text-white font-mono text-xl block p-2.5  w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+        <div className=" text-white font-mono text-xl">
+          <div className=" text-white font-mono text-xl ">
             {" "}
-            <h4>
+            <h4 className=" font-mono">
               Text Summary :{" "}
-              <u>
+              <u className=" text-teal-400 font-mono">
                 <b>
                   {
                     text.split(" ").filter((element) => {
@@ -78,18 +100,20 @@ export default function Form(props) {
                 </b>
               </u>{" "}
               words and{" "}
-              <u>
+              <u className=" text-teal-400 font-mono">
                 <b>{text.length} </b>
               </u>{" "}
+              
+              {" "}
               characters
             </h4>
-            <h4>
+            <h4 className="font-mono">
               Time Required to read text :{" "}
-              <u>
+              <u className=" text-teal-400">
                 <b>{0.008 * text.split(" ").length}</b>
-              </u>
+              </u>{" "}
               minutes or{" "}
-              <u>
+              <u className=" text-teal-400" >
                 <b>{0.48 * text.split(" ").length}</b>
               </u>{" "}
               seconds
@@ -97,10 +121,10 @@ export default function Form(props) {
           </div>
         </div>
       </div>
-      <h2 className="card-title my-3">Preview👀</h2>
-      <div className="card">
-        <div className="card-body">
-          <div className="card-text">
+      <h2 className=" text-white font-mono text-xl mt-10">Preview 👀</h2>
+      <div className=" text-white font-mono text-xl block p-2.5  w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+        <div className=" text-white font-mono text-xl">
+          <div className=" text-white font-mono text-xl">
             {" "}
             <h4>
               {text.length > 0
