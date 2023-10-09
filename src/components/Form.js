@@ -2,18 +2,16 @@ import React, { useState } from "react";
 
 export default function Form(props) {
     const handleUpClick = () => {
-        // console.log("Uppercase was clicked" + text);
-        let newText = text.toUpperCase();
+        let newText = originalText.toUpperCase();
         setText(newText);
     };
     const handleDownClick = () => {
-        // console.log("Lowercase was clicked" + text);
-        let newText = text.toLowerCase();
+        let newText = originalText.toLowerCase();
         setText(newText);
     };
     const handleClearclick = () => {
-        let newText = "";
-        setText(newText);
+        setOriginalText("");
+        setText("");
     };
     const handleCopyclick = () => {
         navigator.clipboard.writeText(text);
@@ -23,10 +21,11 @@ export default function Form(props) {
         setText(newText.join(" "));
     };
     const handleOnChange = (event) => {
-        // console.log("On Change");
+        setOriginalText(event.target.value);
         setText(event.target.value);
     };
 
+    const [originalText, setOriginalText] = useState("");
     const [text, setText] = useState("");
     // setText("new text");
     return (
@@ -37,7 +36,7 @@ export default function Form(props) {
                     <label htmlFor="message" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white mx-auto"></label>
                     <textarea
                         id="message"
-                        value={text}
+                        value={originalText}
                         onChange={handleOnChange}
                         rows="5"
                         className="no-scrollbar block p-2.5 text-lg text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 mt-10 w-full font-mono "
