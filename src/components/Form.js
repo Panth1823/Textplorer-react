@@ -2,15 +2,18 @@ import React, { useState } from "react";
 import Button from "./Button";
 
 export default function Form(props) {
+    const [originalText, setOriginalText] = useState("");
+    const [text, setText] = useState("");
     const handleUpClick = () => {
-        let newText = text.toUpperCase();
+        let newText = originalText.toUpperCase();
         setText(newText);
     };
     const handleDownClick = () => {
-        let newText = text.toLowerCase();
+        let newText = originalText.toLowerCase();
         setText(newText);
     };
     const handleClearclick = () => {
+        setOriginalText("");
         setText("");
     };
     const handleCopyclick = () => {
@@ -21,10 +24,11 @@ export default function Form(props) {
         setText(newText.join(" "));
     };
     const handleOnChange = (event) => {
-        setText(event.target.value);
+        const newText = event.target.value;
+        setOriginalText(newText);
+        setText(newText);
     };
 
-    const [text, setText] = useState("");
     return (
         <>
             <div className="w-7/12">
@@ -33,7 +37,7 @@ export default function Form(props) {
                     <label htmlFor="message" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white mx-auto"></label>
                     <textarea
                         id="message"
-                        value={text}
+                        value={originalText}
                         onChange={handleOnChange}
                         resize="vertical"
                         className="no-scrollbar block p-2.5 text-lg text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 mt-10 w-full font-mono resize-vertical"
